@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício</title>
+    <style>
+        *{
+            padding:0px;
+            margin:0px;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: lightblue;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align:center;
+
+        }
+
+        header{
+            color: white;
+            text-shadow: 1px 1px 1px black;
+            font-size:2em;
+        }
+
+        article{
+            background-color: white;
+            width:500px;
+            height: 260px;
+            margin:auto;
+            margin-top:30px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            
+        }
+
+        select#iflista{
+            width:200px;
+           
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Exercício</h1>
+    </header>
+
+    <article>
+        <div>
+            Número entre 1 e 100:
+            <input type="number" name="fnum" id="ifnum">
+            <input type="button" value="Adicionar" onclick="adicionar()">
+            <br>
+            <select name="flista" id="iflista" size="6"></select>
+            <br>
+            <input type="button" value="Finalizar" onclick="finalizar()">
+        </div>
+        <div id="res">
+            
+        </div>
+    </article>
+    
+    <footer>
+        <p>Made by @diouzedev</p>
+    </footer>
+
+    <script>
+        let num = document.querySelector('input#ifnum')
+        let lista = document.querySelector('#iflista')
+        let res = document.querySelector('div#res')
+        let valores = []
+
+        function isNumero(n){
+            if(Number(n) >= 1 && Number(n) <=100){
+                return true
+            }else{
+                return false
+            }
+            
+        }
+
+        function inLista(n, l) {
+            if(l.indexOf(Number(n)) != -1){
+                return true
+            }else{
+                return false
+            }
+        }
+
+        function adicionar(){
+            if(isNumero(num.value) && !inLista(num.value, valores)){
+            valores.push(Number(num.value))//adiciona no vetor
+                let item = document.createElement('option')
+                item.text = `Valor ${num.value} adicionado`
+                lista.appendChild(item)
+               
+            }else{
+                window.alert('Valor inválido ou já selecionado')
+            }
+        }
+        num.value = ''
+        num.focus() // faz apagar e continuar focado 
+
+        function finalizar(){
+            if(valores.length == 0){
+                window.alert('Adicione valores antes de finalizar')
+            }else{
+                let tot = valores.length
+                let maior = valores[0]
+                let menor = valores [0]
+                let soma = 0
+                let media = 0
+                for( let pos in valores){
+                    soma += valores[pos]
+                    if (valores[pos] > maior)
+                        maior = valores[pos]
+                    if (valores[pos] < menor)
+                        menor = valores[pos]
+                }
+                media = soma / tot
+                res.innerHTML = ''
+                res.innerHTML += `<p>Ao todo, temos ${tot}
+                 números cadastrados.</p>`
+                 res.innerHTML += `<p>O maior valor informado foi ${maior}</p>`
+                 res.innerHTML += `<p>O menor valor informado foi ${menor}</p>`
+                 res.innerHTML += `Somando todos os valores temos ${soma}`
+                 res.innerHTML += `A média é ${media}`
+            }
+        }
+    </script>
+</body>
+</html>
