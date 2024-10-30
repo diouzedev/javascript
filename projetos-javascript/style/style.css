@@ -9,7 +9,7 @@
 
 :root{
     --cor1: #153677;
-    --cor2: #4e085f;
+    --cor2: #a718cb;
     --cor3: #FFBB33;
 }
 
@@ -18,6 +18,7 @@
     height: 100vh;
     background: linear-gradient(160deg, var(--cor1), var(--cor2));
     padding: 6px;
+
     
 }
 
@@ -25,7 +26,7 @@
     width: 100%;
     max-width: 550px;
     background-color: white;
-    margin: 200px auto 200px;
+    margin: 100px auto 200px;
     padding: 30px 20px 200px 30px;
     border-radius: 20px;
     
@@ -44,7 +45,7 @@
     margin-left: 20px;
 }
 
-.linha{
+.row{
     display: flex;
     align-items: center;
     justify-content:space-between;
@@ -70,8 +71,9 @@ button{
     color: white;
     text-shadow: 2px 1px 0px rgba(0, 0, 0, 0.414);
     font-size:1.2em;
-    cursor:cell;
+    cursor:pointer;
     border-radius:40px;
+    
 }
 
 ul li{
@@ -92,7 +94,7 @@ ul li::before{
     background-image: url(../imagens/rec.png);
     background-position:center;
     background-size:cover;
-    top:8px;
+    top:10px;
     left: 12px;
 }
 
@@ -103,4 +105,21 @@ ul li.checked{
 
 ul li.checked::before{
     background-image:url(../imagens/circle.png)
+}
+
+ul li span{
+    position: absolute;
+    right: 0;
+    top: 4px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    line-height:30px;
+    text-align: center;
+    color: #555;
+}
+
+ul li span:hover{
+    background-color: #DFD9E0;
+    border-radius: 50%;
 }
